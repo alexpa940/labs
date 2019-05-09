@@ -28,7 +28,6 @@ void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N)
 int main()
 {
 
-	unsigned int start_time = clock();
 
 	int flag = 9;
 	int count_p;
