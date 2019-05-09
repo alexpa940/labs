@@ -21,8 +21,8 @@ struct savedata
 
 credit add_credit();
 void print_credit(credit* info, int count_p);
-void print_savedata(savedata* info1, int saved_count);
-void same_percent(credit* info, savedata* info1, int count_p, int per, int saved_count);
+void print_savedata(savedata* info1, int &saved_count);
+void same_percent(credit* info, savedata* info1, int count_p, int per, int &saved_count);
 void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N);
 
 int main()
@@ -42,7 +42,7 @@ int main()
 	cout << "3------------Count credit by Last and First name" << endl;
 	cout << "4------------Find person by percent" << endl;
 	cout << "0------------Exit" << endl;
-	
+
 
 	cout << "Input count of people" << endl;
 	cin >> count_p;
@@ -131,14 +131,14 @@ int main()
 			break;
 
 		case 4:
-				cout << "Input percent" << endl;
-				cin >> per ;
+			cout << "Input percent" << endl;
+			cin >> per;
 
-				same_percent(info, info1, count_p, per, saved_count);
+			same_percent(info, info1, count_p, per, saved_count);
 
-				cout << "Printing saved data" << endl;
-				print_savedata(info1, count_p);
-				break;
+			cout << "Printing saved data" << endl;
+			print_savedata(info1, count_p);
+			break;
 		default:
 			cout << "bb" << endl;
 			break;
@@ -146,7 +146,7 @@ int main()
 
 	}
 
-	
+
 
 	system("pause>>0");
 	return 0;
@@ -208,7 +208,7 @@ void print_credit(credit* info, int count_p)
 
 		cout << " |";
 		cout << setw(14) << left << info[i].Summ;
-		cout << "|" ;
+		cout << "|";
 
 		cout << " |";
 		cout << setw(7) << left << info[i].percent;
@@ -225,9 +225,9 @@ void print_credit(credit* info, int count_p)
 }
 
 
-void print_savedata(savedata* info1, int saved_count)
+void print_savedata(savedata* info1, int &saved_count)
 {
-	
+
 	cout << "|------------------| |-------------------|" << endl;
 	cout << "|-----Last_name----| |----First_name-----|" << endl;
 	cout << "|------------------| |-------------------|" << endl;
@@ -248,7 +248,7 @@ void print_savedata(savedata* info1, int saved_count)
 	}
 }
 
-void same_percent(credit* info, savedata* info1, int count_p, int per, int saved_count)
+void same_percent(credit* info, savedata* info1, int count_p, int per, int &saved_count)
 {
 
 	cout << "|------| |------------------| |-------------------| |--------------| |-------|" << endl;
@@ -276,7 +276,7 @@ void same_percent(credit* info, savedata* info1, int count_p, int per, int saved
 
 			cout << " |";
 			cout << setw(14) << left << info[i].Summ;
-			cout << "|" ;
+			cout << "|";
 
 			cout << " |";
 			cout << setw(8) << left << info[i].percent;
@@ -301,7 +301,7 @@ void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N)
 	cout << "|------| |------------------| |-------------------| |--------------| |-------|" << endl;
 	for (int i = 0; i < count_p; i++)
 	{
-		if ((strcmp(info[i].Last_name, L_N) || strcmp(info[i].First_name, F_N)) == 0)
+		if ((strcmp(info[i].Last_name, L_N) && strcmp(info[i].First_name, F_N)) == 0)
 		{
 
 
@@ -321,7 +321,7 @@ void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N)
 
 			cout << " |";
 			cout << setw(14) << left << info[i].Summ;
-			cout << "|" ;
+			cout << "|";
 
 			cout << " |";
 			cout << setw(8) << left << info[i].percent;
