@@ -13,16 +13,9 @@ struct credit
 	int     percent;
 };
 
-struct savedata
-{
-	char*	Last_name;
-	char*	First_name;
-};
-
 credit add_credit();
 void print_credit(credit* info, int count_p);
-void print_savedata(savedata* info1, int &saved_count);
-void same_percent(credit* info, savedata* info1, int count_p, int per, int &saved_count);
+void same_percent(credit* info, int count_p, int per);
 void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N);
 
 int main()
@@ -49,7 +42,6 @@ int main()
 
 
 	credit* info = new credit[count_p];
-	savedata* info1 = new savedata[count_p];
 
 
 	for (int i = 0; i < count_p; i++)
@@ -58,8 +50,6 @@ int main()
 		info[i].Last_name = new char[256];
 		info[i].First_name = new char[256];
 
-		info1[i].Last_name = new char[256];
-		info1[i].First_name = new char[256];
 	}
 
 
@@ -106,9 +96,7 @@ int main()
 			count_p++;
 			info = (credit*)realloc(info, sizeof(credit)*count_p);
 			info[count_p - 1] = add_credit();
-			info1 = (savedata*)realloc(info1, sizeof(savedata)*count_p);
-			info1[count_p - 1].First_name = new char[256];
-			info1[count_p - 1].Last_name = new char[256];
+
 
 			break;
 		case 2:
@@ -134,10 +122,9 @@ int main()
 			cout << "Input percent" << endl;
 			cin >> per;
 
-			same_percent(info, info1, count_p, per, saved_count);
+			same_percent(info, count_p, per);
 
-			cout << "Printing saved data" << endl;
-			print_savedata(info1, count_p);
+
 			break;
 		default:
 			cout << "bb" << endl;
@@ -224,31 +211,7 @@ void print_credit(credit* info, int count_p)
 
 }
 
-
-void print_savedata(savedata* info1, int &saved_count)
-{
-
-	cout << "|------------------| |-------------------|" << endl;
-	cout << "|-----Last_name----| |----First_name-----|" << endl;
-	cout << "|------------------| |-------------------|" << endl;
-	for (int i = 0; i < saved_count; i++)
-	{
-
-		cout << " |";
-		cout << setw(18) << left << info1[i].Last_name;
-		cout << "|";
-
-		cout << " |";
-		cout << setw(19) << left << info1[i].First_name;
-
-		cout << "|" << endl;
-
-
-		cout << "|------------------| |-------------------|" << endl;
-	}
-}
-
-void same_percent(credit* info, savedata* info1, int count_p, int per, int &saved_count)
+void same_percent(credit* info, int count_p, int per)
 {
 
 	cout << "|------| |------------------| |-------------------| |--------------| |-------|" << endl;
@@ -258,9 +221,6 @@ void same_percent(credit* info, savedata* info1, int count_p, int per, int &save
 	{
 		if (info[i].percent == per)
 		{
-			saved_count++;
-			info1[i].Last_name = info[i].Last_name;
-			info1[i].First_name = info[i].First_name;
 
 			cout << "|";
 			cout << setw(6) << left << info[i].ID;
