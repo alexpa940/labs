@@ -4,7 +4,6 @@
 #include <string>
 #include <windows.h>
 #include <cctype>
-//isupper(ch) !=0  <--- буква верхнего регистра латиницы
 using namespace std;
 
 int main()
@@ -54,15 +53,15 @@ int main()
 		//Подсчёт слов в каждой строке 
 		for (i = 0; i < count_str; i++)
 		{
-			if ((isalpha(text[i][0]) != 0) || (isdigit(text[i][0]) != 0))
+			if ((isalnum(text[i][0]) != 0) )
 			{
 				k = k + 1;
 			}
 
 			for (j = 0; j < text[i].size(); j++)
 			{
-				if ((text[i][j] == ' ') && ((isalpha(text[i][j + 1]) != 0) || (isdigit(text[i][j + 1]) != 0))
-					|| (text[i][j] == '	') && ((isalpha(text[i][j + 1]) != 0) || (isdigit(text[i][j + 1]) != 0)))
+				if ((text[i][j] == ' ') && ((isalnum(text[i][j + 1]) != 0))
+					|| (text[i][j] == '	') && ((isalnum(text[i][j + 1]) != 0) ))
 				{
 					k = k + 1;
 				}
@@ -115,7 +114,7 @@ int main()
 		{
 			j = 0;
 			//подсчёт букв первого слова
-			if ((isalpha(text_copy[i][0]) != 0) || (isdigit(text_copy[i][0]) != 0))
+			if ((isalnum(text_copy[i][0]) != 0))
 			{
 				do
 				{
@@ -147,14 +146,14 @@ int main()
 			{
 
 
-				if (((isalpha(text_copy[i][j + 1]) != 0) || (isdigit(text_copy[i][j + 1]) != 0))
+				if (((isalnum(text_copy[i][j + 1]) != 0) )
 					&& isspace(text_copy[i][j]) != 0)
 				{
 					do
 					{
 						k = k + 1;
 						j = j + 1;
-						if (((isalpha(text_copy[i][j]) != 0) || (isdigit(text_copy[i][j]) != 0))
+						if (((isalnum(text_copy[i][j]) != 0))
 							&& isspace(text_copy[i][j + 1]) != 0)
 						{
 							words = words + 1;
