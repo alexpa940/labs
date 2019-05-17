@@ -60,11 +60,7 @@ int main()
 
 			for (j = 0; j < text[i].size(); j++)
 			{
-				if ((text[i][j] == ' ') && ((isalnum(text[i][j + 1]) != 0))
-					|| (text[i][j] == '	') && ((isalnum(text[i][j + 1]) != 0) ))
-				{
-					k = k + 1;
-				}
+				if (text[i][j] == ' ' && isalnum(text[i][j + 1])) k++;
 			}
 
 
