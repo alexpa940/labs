@@ -644,7 +644,7 @@ void count_credit_b_date(credit* info, int count_p, int d, char* m, int y)
 		int m_in = 0;
 		int m_was = 0;
 
-/*
+
 		if (strcmp(info[i].date.month, "January") == 0)
 			m_was = 1;
 		if (strcmp(info[i].date.month, "February")  == 0)
@@ -693,64 +693,12 @@ void count_credit_b_date(credit* info, int count_p, int d, char* m, int y)
 		if (strcmp(m, "November") == 0)
 			m_in = 11;
 		if (strcmp(m, "December") == 0)
-			m_in = 12; */
-		m_was = atoi(info[i].date.month);
-
-
-		if (info[i].date.month == "January")
-			m_was = 1;
-		if (info[i].date.month == "February")
-			m_was = 2;
-		if (info[i].date.month == "March")
-			m_was = 3;
-		if (info[i].date.month == "April")
-			m_was = 4;
-		if (info[i].date.month == "May")
-			m_was = 5;
-		if (info[i].date.month == "June")
-			m_was = 6;
-		if (info[i].date.month == "July")
-			m_was = 7;
-		if (info[i].date.month == "August")
-			m_in = 8;
-		if (info[i].date.month == "September")
-			m_was = 9;
-		if (info[i].date.month == "October")
-			m_was = 10;
-		if (info[i].date.month == "November")
-			m_was = 11;
-		if (info[i].date.month == "December")
-			m_was = 12;
-
-		m_in = atoi(m);
-		if (m == "January")
-			m_in = 1;
-		if (m == "February")
-			m_in = 2;
-		if (m == "March")
-			m_in = 3;
-		if (m == "April")
-			m_in = 4;
-		if (m == "May")
-			m_in = 5;
-		if (m == "June")
-			m_in = 6;
-		if (m == "July")
-			m_in = 7;
-		if (m == "August")
-			m_in = 8;
-		if (m == "September")
-			m_in = 9;
-		if (m == "October")
-			m_in = 10;
-		if (m == "November")
-			m_in = 11;
-		if (m == "December")
 			m_in = 12;
+
 
 		cur = y * 12 + m_in;
 		date = info[i].date.year * 12 + m_was;
-		cout << endl << "cur = " << m_in << "date= " << m_was << endl;
+	//	cout << endl << "cur = " << m_in << "date= " << m_was << endl;
 
 		if (cur - date >= info[i].date.delay)
 		{
