@@ -41,7 +41,7 @@ void print_credit(credit* info, int count_p);
 void same_percent(credit* info, int count_p, int per);
 void count_credit_b_L_N_and_F_N(credit* info, int count_p, char* L_N, char* F_N, char* FF_N);
 void count_credit_b_date(credit* info, int count_p, int d, char* m, int y);
-void del_user(credit* info, int *count_p, int d, char* m, int y);
+credit* del_user(credit* info, int *count_p, int d, char* m, int y);
 void destroy(credit* info);
 void sort_credit(credit* info, int count_p);
 credit* add_user(credit* info, int *count_p);
@@ -227,7 +227,7 @@ int main()
 
 				cout << "Input Date_year" << endl;
 				cin >> y;
-				del_user(info, &count_p, d, m, y);
+				info=del_user(info, &count_p, d, m, y);
 
 				break;
 			case 7:
@@ -402,7 +402,7 @@ int main()
 
 				cout << "Input Date_year" << endl;
 				cin >> y;
-				del_user(info, &count_p, d, m, y);
+				info = del_user(info, &count_p, d, m, y);
 				break;
 			case 7:
 
@@ -809,7 +809,7 @@ void count_credit_b_date(credit* info, int count_p, int d, char* m, int y)
 
 
 
-void del_user(credit* info, int *count_p, int d, char* m, int y)
+credit* del_user(credit* info, int *count_p, int d, char* m, int y)
 {
 	int *ptrarray = new int[*count_p - 1];
 	int dd = 0;
@@ -848,6 +848,7 @@ void del_user(credit* info, int *count_p, int d, char* m, int y)
 			info[j] = temp[j];
 		destroy(temp);
 	}
+	return info;
 }
 
 void destroy(credit* info)
